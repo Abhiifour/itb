@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: issue-tracker-store
+    ports: 
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: randompassword
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+
+volumes:
+  db_data:
