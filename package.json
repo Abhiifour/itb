@@ -13,7 +13,9 @@
   "dependencies": {
     "@prisma/client": "^5.22.0",
     "@types/express": "^5.0.1",
+    "@types/jsonwebtoken": "^9.0.9",
     "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
     "node-cron": "^4.0.5",
     "octokit": "^4.1.3"
   },

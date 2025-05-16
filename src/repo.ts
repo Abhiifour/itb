@@ -19,7 +19,6 @@ export  async function createRepo(req:Request, res:Response):Promise<any>{
                 owner:owner,
                 lastIssueId:lastIssue.id,
                 lastIssueUpdatedAt:lastIssue.lastIssueUpdatedAt
-
             }
         })
 
@@ -70,7 +69,7 @@ export  async function getAllRepo(req:Request, res:Response):Promise<any>{
 
         return res.json({
             message:'repos found',
-            repos
+            repos: repos?.subRepos
         })
     } catch (error) {
         return res.json(error)
