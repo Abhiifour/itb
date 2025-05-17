@@ -1138,26 +1138,23 @@ export namespace Prisma {
 
   export type UserMinAggregateOutputType = {
     id: number | null
-    name: string | null
     username: string | null
     email: string | null
-    password: string | null
+    image: string | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: number | null
-    name: string | null
     username: string | null
     email: string | null
-    password: string | null
+    image: string | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
-    name: number
     username: number
     email: number
-    password: number
+    image: number
     _all: number
   }
 
@@ -1172,26 +1169,23 @@ export namespace Prisma {
 
   export type UserMinAggregateInputType = {
     id?: true
-    name?: true
     username?: true
     email?: true
-    password?: true
+    image?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
-    name?: true
     username?: true
     email?: true
-    password?: true
+    image?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
-    name?: true
     username?: true
     email?: true
-    password?: true
+    image?: true
     _all?: true
   }
 
@@ -1283,10 +1277,9 @@ export namespace Prisma {
 
   export type UserGroupByOutputType = {
     id: number
-    name: string
     username: string
     email: string
-    password: string
+    image: string
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1310,10 +1303,9 @@ export namespace Prisma {
 
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    name?: boolean
     username?: boolean
     email?: boolean
-    password?: boolean
+    image?: boolean
     subRepos?: boolean | User$subReposArgs<ExtArgs>
     notification?: boolean | User$notificationArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1321,18 +1313,16 @@ export namespace Prisma {
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    name?: boolean
     username?: boolean
     email?: boolean
-    password?: boolean
+    image?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
     id?: boolean
-    name?: boolean
     username?: boolean
     email?: boolean
-    password?: boolean
+    image?: boolean
   }
 
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1350,10 +1340,9 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      name: string
       username: string
       email: string
-      password: string
+      image: string
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1750,10 +1739,9 @@ export namespace Prisma {
    */ 
   interface UserFieldRefs {
     readonly id: FieldRef<"User", 'Int'>
-    readonly name: FieldRef<"User", 'String'>
     readonly username: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
-    readonly password: FieldRef<"User", 'String'>
+    readonly image: FieldRef<"User", 'String'>
   }
     
 
@@ -3127,16 +3115,19 @@ export namespace Prisma {
   export type NotificationMinAggregateOutputType = {
     id: number | null
     title: string | null
+    repo: string | null
   }
 
   export type NotificationMaxAggregateOutputType = {
     id: number | null
     title: string | null
+    repo: string | null
   }
 
   export type NotificationCountAggregateOutputType = {
     id: number
     title: number
+    repo: number
     _all: number
   }
 
@@ -3152,16 +3143,19 @@ export namespace Prisma {
   export type NotificationMinAggregateInputType = {
     id?: true
     title?: true
+    repo?: true
   }
 
   export type NotificationMaxAggregateInputType = {
     id?: true
     title?: true
+    repo?: true
   }
 
   export type NotificationCountAggregateInputType = {
     id?: true
     title?: true
+    repo?: true
     _all?: true
   }
 
@@ -3254,6 +3248,7 @@ export namespace Prisma {
   export type NotificationGroupByOutputType = {
     id: number
     title: string
+    repo: string
     _count: NotificationCountAggregateOutputType | null
     _avg: NotificationAvgAggregateOutputType | null
     _sum: NotificationSumAggregateOutputType | null
@@ -3278,6 +3273,7 @@ export namespace Prisma {
   export type NotificationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
+    repo?: boolean
     user?: boolean | Notification$userArgs<ExtArgs>
     _count?: boolean | NotificationCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["notification"]>
@@ -3285,11 +3281,13 @@ export namespace Prisma {
   export type NotificationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
+    repo?: boolean
   }, ExtArgs["result"]["notification"]>
 
   export type NotificationSelectScalar = {
     id?: boolean
     title?: boolean
+    repo?: boolean
   }
 
   export type NotificationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3306,6 +3304,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       title: string
+      repo: string
     }, ExtArgs["result"]["notification"]>
     composites: {}
   }
@@ -3702,6 +3701,7 @@ export namespace Prisma {
   interface NotificationFieldRefs {
     readonly id: FieldRef<"Notification", 'Int'>
     readonly title: FieldRef<"Notification", 'String'>
+    readonly repo: FieldRef<"Notification", 'String'>
   }
     
 
@@ -4066,10 +4066,9 @@ export namespace Prisma {
 
   export const UserScalarFieldEnum: {
     id: 'id',
-    name: 'name',
     username: 'username',
     email: 'email',
-    password: 'password'
+    image: 'image'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -4088,7 +4087,8 @@ export namespace Prisma {
 
   export const NotificationScalarFieldEnum: {
     id: 'id',
-    title: 'title'
+    title: 'title',
+    repo: 'repo'
   };
 
   export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
@@ -4173,20 +4173,18 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     id?: IntFilter<"User"> | number
-    name?: StringFilter<"User"> | string
     username?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
-    password?: StringFilter<"User"> | string
+    image?: StringFilter<"User"> | string
     subRepos?: RepoListRelationFilter
     notification?: NotificationListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
-    name?: SortOrder
     username?: SortOrder
     email?: SortOrder
-    password?: SortOrder
+    image?: SortOrder
     subRepos?: RepoOrderByRelationAggregateInput
     notification?: NotificationOrderByRelationAggregateInput
   }
@@ -4198,18 +4196,16 @@ export namespace Prisma {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    name?: StringFilter<"User"> | string
-    password?: StringFilter<"User"> | string
+    image?: StringFilter<"User"> | string
     subRepos?: RepoListRelationFilter
     notification?: NotificationListRelationFilter
   }, "id" | "username" | "email">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
-    name?: SortOrder
     username?: SortOrder
     email?: SortOrder
-    password?: SortOrder
+    image?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -4222,10 +4218,9 @@ export namespace Prisma {
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"User"> | number
-    name?: StringWithAggregatesFilter<"User"> | string
     username?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
-    password?: StringWithAggregatesFilter<"User"> | string
+    image?: StringWithAggregatesFilter<"User"> | string
   }
 
   export type RepoWhereInput = {
@@ -4291,12 +4286,14 @@ export namespace Prisma {
     NOT?: NotificationWhereInput | NotificationWhereInput[]
     id?: IntFilter<"Notification"> | number
     title?: StringFilter<"Notification"> | string
+    repo?: StringFilter<"Notification"> | string
     user?: UserListRelationFilter
   }
 
   export type NotificationOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
+    repo?: SortOrder
     user?: UserOrderByRelationAggregateInput
   }
 
@@ -4306,12 +4303,14 @@ export namespace Prisma {
     OR?: NotificationWhereInput[]
     NOT?: NotificationWhereInput | NotificationWhereInput[]
     title?: StringFilter<"Notification"> | string
+    repo?: StringFilter<"Notification"> | string
     user?: UserListRelationFilter
   }, "id">
 
   export type NotificationOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
+    repo?: SortOrder
     _count?: NotificationCountOrderByAggregateInput
     _avg?: NotificationAvgOrderByAggregateInput
     _max?: NotificationMaxOrderByAggregateInput
@@ -4325,67 +4324,61 @@ export namespace Prisma {
     NOT?: NotificationScalarWhereWithAggregatesInput | NotificationScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Notification"> | number
     title?: StringWithAggregatesFilter<"Notification"> | string
+    repo?: StringWithAggregatesFilter<"Notification"> | string
   }
 
   export type UserCreateInput = {
-    name: string
     username: string
     email: string
-    password: string
+    image: string
     subRepos?: RepoCreateNestedManyWithoutSubscribersInput
     notification?: NotificationCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
     id?: number
-    name: string
     username: string
     email: string
-    password: string
+    image: string
     subRepos?: RepoUncheckedCreateNestedManyWithoutSubscribersInput
     notification?: NotificationUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
-    name?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     subRepos?: RepoUpdateManyWithoutSubscribersNestedInput
     notification?: NotificationUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     subRepos?: RepoUncheckedUpdateManyWithoutSubscribersNestedInput
     notification?: NotificationUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
     id?: number
-    name: string
     username: string
     email: string
-    password: string
+    image: string
   }
 
   export type UserUpdateManyMutationInput = {
-    name?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
   }
 
   export type RepoCreateInput = {
@@ -4447,38 +4440,45 @@ export namespace Prisma {
 
   export type NotificationCreateInput = {
     title: string
+    repo: string
     user?: UserCreateNestedManyWithoutNotificationInput
   }
 
   export type NotificationUncheckedCreateInput = {
     id?: number
     title: string
+    repo: string
     user?: UserUncheckedCreateNestedManyWithoutNotificationInput
   }
 
   export type NotificationUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
+    repo?: StringFieldUpdateOperationsInput | string
     user?: UserUpdateManyWithoutNotificationNestedInput
   }
 
   export type NotificationUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
+    repo?: StringFieldUpdateOperationsInput | string
     user?: UserUncheckedUpdateManyWithoutNotificationNestedInput
   }
 
   export type NotificationCreateManyInput = {
     id?: number
     title: string
+    repo: string
   }
 
   export type NotificationUpdateManyMutationInput = {
     title?: StringFieldUpdateOperationsInput | string
+    repo?: StringFieldUpdateOperationsInput | string
   }
 
   export type NotificationUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
+    repo?: StringFieldUpdateOperationsInput | string
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -4529,10 +4529,9 @@ export namespace Prisma {
 
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
     username?: SortOrder
     email?: SortOrder
-    password?: SortOrder
+    image?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -4541,18 +4540,16 @@ export namespace Prisma {
 
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
     username?: SortOrder
     email?: SortOrder
-    password?: SortOrder
+    image?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
     username?: SortOrder
     email?: SortOrder
-    password?: SortOrder
+    image?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -4676,6 +4673,7 @@ export namespace Prisma {
   export type NotificationCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
+    repo?: SortOrder
   }
 
   export type NotificationAvgOrderByAggregateInput = {
@@ -4685,11 +4683,13 @@ export namespace Prisma {
   export type NotificationMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
+    repo?: SortOrder
   }
 
   export type NotificationMinOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
+    repo?: SortOrder
   }
 
   export type NotificationSumOrderByAggregateInput = {
@@ -4997,11 +4997,13 @@ export namespace Prisma {
 
   export type NotificationCreateWithoutUserInput = {
     title: string
+    repo: string
   }
 
   export type NotificationUncheckedCreateWithoutUserInput = {
     id?: number
     title: string
+    repo: string
   }
 
   export type NotificationCreateOrConnectWithoutUserInput = {
@@ -5058,22 +5060,21 @@ export namespace Prisma {
     NOT?: NotificationScalarWhereInput | NotificationScalarWhereInput[]
     id?: IntFilter<"Notification"> | number
     title?: StringFilter<"Notification"> | string
+    repo?: StringFilter<"Notification"> | string
   }
 
   export type UserCreateWithoutSubReposInput = {
-    name: string
     username: string
     email: string
-    password: string
+    image: string
     notification?: NotificationCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSubReposInput = {
     id?: number
-    name: string
     username: string
     email: string
-    password: string
+    image: string
     notification?: NotificationUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -5103,26 +5104,23 @@ export namespace Prisma {
     OR?: UserScalarWhereInput[]
     NOT?: UserScalarWhereInput | UserScalarWhereInput[]
     id?: IntFilter<"User"> | number
-    name?: StringFilter<"User"> | string
     username?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
-    password?: StringFilter<"User"> | string
+    image?: StringFilter<"User"> | string
   }
 
   export type UserCreateWithoutNotificationInput = {
-    name: string
     username: string
     email: string
-    password: string
+    image: string
     subRepos?: RepoCreateNestedManyWithoutSubscribersInput
   }
 
   export type UserUncheckedCreateWithoutNotificationInput = {
     id?: number
-    name: string
     username: string
     email: string
-    password: string
+    image: string
     subRepos?: RepoUncheckedCreateNestedManyWithoutSubscribersInput
   }
 
@@ -5172,66 +5170,63 @@ export namespace Prisma {
 
   export type NotificationUpdateWithoutUserInput = {
     title?: StringFieldUpdateOperationsInput | string
+    repo?: StringFieldUpdateOperationsInput | string
   }
 
   export type NotificationUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
+    repo?: StringFieldUpdateOperationsInput | string
   }
 
   export type NotificationUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
+    repo?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserUpdateWithoutSubReposInput = {
-    name?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     notification?: NotificationUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSubReposInput = {
     id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     notification?: NotificationUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutSubReposInput = {
     id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserUpdateWithoutNotificationInput = {
-    name?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     subRepos?: RepoUpdateManyWithoutSubscribersNestedInput
   }
 
   export type UserUncheckedUpdateWithoutNotificationInput = {
     id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     subRepos?: RepoUncheckedUpdateManyWithoutSubscribersNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutNotificationInput = {
     id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
   }
 
 

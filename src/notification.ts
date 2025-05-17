@@ -3,12 +3,12 @@ import { prisma } from "./db";
 
 export async function getNotification(req:Request, res:Response):Promise<any>{
     try {
-        const {userId} = req.body;
+        const {username} = req.body;
         const notifications = await prisma.notification.findMany({
             where: {
                 user: {
                     some: {
-                    id: userId 
+                    username:username 
                     }
                 }
             }
@@ -22,12 +22,12 @@ export async function getNotification(req:Request, res:Response):Promise<any>{
 
 export async function getLatestNotification(req:Request, res:Response):Promise<any>{
     try {
-        const {userId,lastNotificationId} = req.body;
+        const {username,lastNotificationId} = req.body;
         const notifications = await prisma.notification.findMany({
             where: {
                 user: {
                     some: {
-                    id: userId 
+                    username:username 
                     }
                 }
             }
