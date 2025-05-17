@@ -7,19 +7,24 @@ const jwtKey = process.env.JWT_SECRET_KEY || "abhiifour"
 export async function login(req:Request , res: Response): Promise<any>{
 
     try {
-        const {email,password} = req.body;
+        const {email,username,image} = req.body;
         const user = await prisma.user.findFirst({
             where:{
                 email:email,
-                password:password
+                username:username
             }
         })
 
-        if(user){
-            const token = jwt.sign(jwtKey,email)
+        if(!user){
+            const newUser = await prisma.user.create({
+                data:{
+                    email:email,
+                    username:username,
+                    image:image
+                }
+            })
             return res.status(200).json({
-                token,
-                user
+                newUser
             })
         }
     } catch (error) {
@@ -31,7 +36,7 @@ export async function login(req:Request , res: Response): Promise<any>{
 export async function signup(req:Request , res: Response) :Promise<any>{
 
     try {
-        const {name , username, email,password} = req.body;
+        const {image , username, email,} = req.body;
         const user = await prisma.user.findFirst({
             where:{
                 email:email,             
@@ -42,10 +47,9 @@ export async function signup(req:Request , res: Response) :Promise<any>{
 
             const newUser = await prisma.user.create({
                 data:{
-                    name:name,
                     username:username,
                     email:email,
-                    password:password
+                    image:image
                 }
             })
             return res.status(200).json({

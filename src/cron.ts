@@ -26,7 +26,8 @@ export function cronJob(){
                                 connect: repo.subscribers.map(subscriber => ({
                                     id: subscriber.id 
                                 }))
-                            }
+                            },
+                            repo:repo.name
                         }
                     });
                 }

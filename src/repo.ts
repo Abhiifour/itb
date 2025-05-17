@@ -57,10 +57,10 @@ export  async function getARepo(req:Request, res:Response):Promise<any>{
 
 export  async function getAllRepo(req:Request, res:Response):Promise<any>{
     try {
-        const {id} = req.body; //user id
+        const {username} = req.body; //user id
         const repos = await prisma.user.findUnique({
             where:{
-                id:id
+                username:username
             },
             include:{
                 subRepos: true
@@ -68,7 +68,6 @@ export  async function getAllRepo(req:Request, res:Response):Promise<any>{
         })
 
         return res.json({
-            message:'repos found',
             repos: repos?.subRepos
         })
     } catch (error) {
@@ -102,7 +101,7 @@ export  async function deleteARepo(req:Request, res:Response):Promise<any>{
 
 export async function subscribeRepo(req: Request , res: Response):Promise<any>{
     try {
-        const {repoId , userId} = req.body;
+        const {repoId , username} = req.body;
 
         const sub = await prisma.repo.update({
             where: {
@@ -112,7 +111,7 @@ export async function subscribeRepo(req: Request , res: Response):Promise<any>{
             subscribers: {
 
                 connect: {
-                    id: userId
+                    username:username
                 }
             }
             }
@@ -134,7 +133,7 @@ export async function subscribeRepo(req: Request , res: Response):Promise<any>{
 
 export async function unsubscribeRepo(req: Request , res: Response):Promise<any>{
     try {
-        const {repoId , userId} = req.body;
+        const {repoId , username} = req.body;
 
         const sub = await prisma.repo.update({
             where: {
@@ -144,7 +143,7 @@ export async function unsubscribeRepo(req: Request , res: Response):Promise<any>
             subscribers: {
 
                 disconnect: {
-                    id: userId
+                    username:username
                 }
             }
             }

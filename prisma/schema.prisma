@@ -16,10 +16,9 @@ datasource db {
 
 model User{
   id            Int @id @default(autoincrement())
-  name          String
   username      String @unique
   email         String @unique
-  password      String
+  image         String
   subRepos      Repo[]
   notification  Notification[]
 }
@@ -36,5 +35,6 @@ model Repo{
 model Notification{
   id            Int @id @default(autoincrement())
   title         String
+  repo          String
   user          User[]
 }
