@@ -11,21 +11,37 @@ export  async function createRepo(req:Request, res:Response):Promise<any>{
 
 
         const {name , owner} = req.body;
+        console.log(name,owner)
 
-        const lastIssue : any = await getLastIssue(name,owner) 
-        const repo = await prisma.repo.create({
-            data:{
+     
+        const repoExists = await prisma.repo.findFirst({
+            where:{
                 name:name,
-                owner:owner,
-                lastIssueId:lastIssue.id,
-                lastIssueUpdatedAt:lastIssue.lastIssueUpdatedAt
+                owner:owner
             }
         })
 
+        if(!repoExists){
+            const lastIssue : any = await getLastIssue(name,owner) 
+            console.log(lastIssue)
+            const repo = await prisma.repo.create({
+                data:{
+                    name:name,
+                    owner:owner,
+                    lastIssueId:lastIssue.id,
+                    lastIssueUpdatedAt:lastIssue.lastIssueUpdatedAt
+                }
+            })
+    
+            return res.json({
+                repo
+            })
+        }
+
         return res.json({
-            message:'repo created',
-            repo
-        })
+            repoExists
+        });
+  
     } catch (error) {
         return res.json(error)
     }
@@ -101,26 +117,49 @@ export  async function deleteARepo(req:Request, res:Response):Promise<any>{
 
 export async function subscribeRepo(req: Request , res: Response):Promise<any>{
     try {
-        const {repoId , username} = req.body;
+        const {name,owner , username} = req.body;
 
-        const sub = await prisma.repo.update({
-            where: {
-            id: repoId
-            },
-            data: {
-            subscribers: {
+        const repo = await prisma.repo.findFirst({
+            where:{
+                name:name,
+                owner:owner
+            }
+        })
 
-                connect: {
-                    username:username
+        const user = await prisma.user.findFirst({
+            where:{
+                username:username
+            }
+        })
+
+        if(repo && user){
+            await prisma.repo.update({
+                where: {
+                    id: repo.id
+                },
+                data: {
+                    subscribers: {
+                        connect: {
+                            username: username
+                        }
+                    }
                 }
-            }
-            }
+            });
+
+            return res.json({
+                message: "subscribed"
+            });
+    
+        }
+
+        if(!user)
+        return res.json({
+            message:"user not found !!"
         })
 
         return res.json({
-            message:"subscribed"
+            message:"repo not found"
         })
-
     } catch (error) {
         return res.json({
             error
@@ -133,21 +172,29 @@ export async function subscribeRepo(req: Request , res: Response):Promise<any>{
 
 export async function unsubscribeRepo(req: Request , res: Response):Promise<any>{
     try {
-        const {repoId , username} = req.body;
-
-        const sub = await prisma.repo.update({
-            where: {
-            id: repoId
-            },
-            data: {
-            subscribers: {
-
-                disconnect: {
-                    username:username
-                }
-            }
+        const {name, owner , username} = req.body;
+        const repo = await prisma.repo.findFirst({
+            where:{
+                name:name,
+                owner:owner
             }
         })
+        if(repo){
+            const sub = await prisma.repo.update({
+                where: {
+                id: repo.id
+                },
+                data: {
+                subscribers: {
+    
+                    disconnect: {
+                        username:username
+                    }
+                }
+                }
+            })
+        }
+      
         
         return res.json({
             message:"unsubscribed"

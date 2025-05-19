@@ -4,8 +4,8 @@ import { getIssues, getLastIssue } from './github';
 
 
 export function cronJob(){
-    cron.schedule('* * * * *', async () => {
-        console.log('running a task every minute');
+    cron.schedule('*/5 * * * *', async () => {
+        console.log('running a task every 5 minutes');
 
         
         const repos = await prisma.repo.findMany({
@@ -27,7 +27,10 @@ export function cronJob(){
                                     id: subscriber.id 
                                 }))
                             },
-                            repo:repo.name
+                            repo:repo.name,
+                            owner:repo.owner,
+                            issueId:issue.number,
+                            created_at:issue.created_at
                         }
                     });
                 }
@@ -40,7 +43,7 @@ export function cronJob(){
                     },
                     data:{
                         lastIssueUpdatedAt:lastUpdatedAt.lastIssueUpdatedAt,
-                        lastIssueId:lastUpdatedAt.id
+                        lastIssueId:lastUpdatedAt.number
                     }
                 })
             }

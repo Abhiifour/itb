@@ -140,7 +140,10 @@ exports.Prisma.RepoScalarFieldEnum = {
 exports.Prisma.NotificationScalarFieldEnum = {
   id: 'id',
   title: 'title',
-  repo: 'repo'
+  repo: 'repo',
+  owner: 'owner',
+  issueId: 'issueId',
+  created_at: 'created_at'
 };
 
 exports.Prisma.SortOrder = {

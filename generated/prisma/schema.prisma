@@ -33,8 +33,11 @@ model Repo {
 }
 
 model Notification {
-  id    Int    @id @default(autoincrement())
-  title String
-  repo  String
-  user  User[]
+  id         Int     @id @default(autoincrement())
+  title      String
+  repo       String
+  owner      String?
+  issueId    Int?
+  created_at String?
+  user       User[]
 }

@@ -3106,56 +3106,78 @@ export namespace Prisma {
 
   export type NotificationAvgAggregateOutputType = {
     id: number | null
+    issueId: number | null
   }
 
   export type NotificationSumAggregateOutputType = {
     id: number | null
+    issueId: number | null
   }
 
   export type NotificationMinAggregateOutputType = {
     id: number | null
     title: string | null
     repo: string | null
+    owner: string | null
+    issueId: number | null
+    created_at: string | null
   }
 
   export type NotificationMaxAggregateOutputType = {
     id: number | null
     title: string | null
     repo: string | null
+    owner: string | null
+    issueId: number | null
+    created_at: string | null
   }
 
   export type NotificationCountAggregateOutputType = {
     id: number
     title: number
     repo: number
+    owner: number
+    issueId: number
+    created_at: number
     _all: number
   }
 
 
   export type NotificationAvgAggregateInputType = {
     id?: true
+    issueId?: true
   }
 
   export type NotificationSumAggregateInputType = {
     id?: true
+    issueId?: true
   }
 
   export type NotificationMinAggregateInputType = {
     id?: true
     title?: true
     repo?: true
+    owner?: true
+    issueId?: true
+    created_at?: true
   }
 
   export type NotificationMaxAggregateInputType = {
     id?: true
     title?: true
     repo?: true
+    owner?: true
+    issueId?: true
+    created_at?: true
   }
 
   export type NotificationCountAggregateInputType = {
     id?: true
     title?: true
     repo?: true
+    owner?: true
+    issueId?: true
+    created_at?: true
     _all?: true
   }
 
@@ -3249,6 +3271,9 @@ export namespace Prisma {
     id: number
     title: string
     repo: string
+    owner: string | null
+    issueId: number | null
+    created_at: string | null
     _count: NotificationCountAggregateOutputType | null
     _avg: NotificationAvgAggregateOutputType | null
     _sum: NotificationSumAggregateOutputType | null
@@ -3274,6 +3299,9 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     repo?: boolean
+    owner?: boolean
+    issueId?: boolean
+    created_at?: boolean
     user?: boolean | Notification$userArgs<ExtArgs>
     _count?: boolean | NotificationCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["notification"]>
@@ -3282,12 +3310,18 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     repo?: boolean
+    owner?: boolean
+    issueId?: boolean
+    created_at?: boolean
   }, ExtArgs["result"]["notification"]>
 
   export type NotificationSelectScalar = {
     id?: boolean
     title?: boolean
     repo?: boolean
+    owner?: boolean
+    issueId?: boolean
+    created_at?: boolean
   }
 
   export type NotificationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3305,6 +3339,9 @@ export namespace Prisma {
       id: number
       title: string
       repo: string
+      owner: string | null
+      issueId: number | null
+      created_at: string | null
     }, ExtArgs["result"]["notification"]>
     composites: {}
   }
@@ -3702,6 +3739,9 @@ export namespace Prisma {
     readonly id: FieldRef<"Notification", 'Int'>
     readonly title: FieldRef<"Notification", 'String'>
     readonly repo: FieldRef<"Notification", 'String'>
+    readonly owner: FieldRef<"Notification", 'String'>
+    readonly issueId: FieldRef<"Notification", 'Int'>
+    readonly created_at: FieldRef<"Notification", 'String'>
   }
     
 
@@ -4088,7 +4128,10 @@ export namespace Prisma {
   export const NotificationScalarFieldEnum: {
     id: 'id',
     title: 'title',
-    repo: 'repo'
+    repo: 'repo',
+    owner: 'owner',
+    issueId: 'issueId',
+    created_at: 'created_at'
   };
 
   export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
@@ -4287,6 +4330,9 @@ export namespace Prisma {
     id?: IntFilter<"Notification"> | number
     title?: StringFilter<"Notification"> | string
     repo?: StringFilter<"Notification"> | string
+    owner?: StringNullableFilter<"Notification"> | string | null
+    issueId?: IntNullableFilter<"Notification"> | number | null
+    created_at?: StringNullableFilter<"Notification"> | string | null
     user?: UserListRelationFilter
   }
 
@@ -4294,6 +4340,9 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     repo?: SortOrder
+    owner?: SortOrderInput | SortOrder
+    issueId?: SortOrderInput | SortOrder
+    created_at?: SortOrderInput | SortOrder
     user?: UserOrderByRelationAggregateInput
   }
 
@@ -4304,6 +4353,9 @@ export namespace Prisma {
     NOT?: NotificationWhereInput | NotificationWhereInput[]
     title?: StringFilter<"Notification"> | string
     repo?: StringFilter<"Notification"> | string
+    owner?: StringNullableFilter<"Notification"> | string | null
+    issueId?: IntNullableFilter<"Notification"> | number | null
+    created_at?: StringNullableFilter<"Notification"> | string | null
     user?: UserListRelationFilter
   }, "id">
 
@@ -4311,6 +4363,9 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     repo?: SortOrder
+    owner?: SortOrderInput | SortOrder
+    issueId?: SortOrderInput | SortOrder
+    created_at?: SortOrderInput | SortOrder
     _count?: NotificationCountOrderByAggregateInput
     _avg?: NotificationAvgOrderByAggregateInput
     _max?: NotificationMaxOrderByAggregateInput
@@ -4325,6 +4380,9 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Notification"> | number
     title?: StringWithAggregatesFilter<"Notification"> | string
     repo?: StringWithAggregatesFilter<"Notification"> | string
+    owner?: StringNullableWithAggregatesFilter<"Notification"> | string | null
+    issueId?: IntNullableWithAggregatesFilter<"Notification"> | number | null
+    created_at?: StringNullableWithAggregatesFilter<"Notification"> | string | null
   }
 
   export type UserCreateInput = {
@@ -4441,6 +4499,9 @@ export namespace Prisma {
   export type NotificationCreateInput = {
     title: string
     repo: string
+    owner?: string | null
+    issueId?: number | null
+    created_at?: string | null
     user?: UserCreateNestedManyWithoutNotificationInput
   }
 
@@ -4448,12 +4509,18 @@ export namespace Prisma {
     id?: number
     title: string
     repo: string
+    owner?: string | null
+    issueId?: number | null
+    created_at?: string | null
     user?: UserUncheckedCreateNestedManyWithoutNotificationInput
   }
 
   export type NotificationUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
     repo?: StringFieldUpdateOperationsInput | string
+    owner?: NullableStringFieldUpdateOperationsInput | string | null
+    issueId?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateManyWithoutNotificationNestedInput
   }
 
@@ -4461,6 +4528,9 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     repo?: StringFieldUpdateOperationsInput | string
+    owner?: NullableStringFieldUpdateOperationsInput | string | null
+    issueId?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUncheckedUpdateManyWithoutNotificationNestedInput
   }
 
@@ -4468,17 +4538,26 @@ export namespace Prisma {
     id?: number
     title: string
     repo: string
+    owner?: string | null
+    issueId?: number | null
+    created_at?: string | null
   }
 
   export type NotificationUpdateManyMutationInput = {
     title?: StringFieldUpdateOperationsInput | string
     repo?: StringFieldUpdateOperationsInput | string
+    owner?: NullableStringFieldUpdateOperationsInput | string | null
+    issueId?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type NotificationUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     repo?: StringFieldUpdateOperationsInput | string
+    owner?: NullableStringFieldUpdateOperationsInput | string | null
+    issueId?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -4670,30 +4749,68 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NotificationCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     repo?: SortOrder
+    owner?: SortOrder
+    issueId?: SortOrder
+    created_at?: SortOrder
   }
 
   export type NotificationAvgOrderByAggregateInput = {
     id?: SortOrder
+    issueId?: SortOrder
   }
 
   export type NotificationMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     repo?: SortOrder
+    owner?: SortOrder
+    issueId?: SortOrder
+    created_at?: SortOrder
   }
 
   export type NotificationMinOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     repo?: SortOrder
+    owner?: SortOrder
+    issueId?: SortOrder
+    created_at?: SortOrder
   }
 
   export type NotificationSumOrderByAggregateInput = {
     id?: SortOrder
+    issueId?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type RepoCreateNestedManyWithoutSubscribersInput = {
@@ -4838,6 +4955,14 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type UserUpdateManyWithoutNotificationNestedInput = {
     create?: XOR<UserCreateWithoutNotificationInput, UserUncheckedCreateWithoutNotificationInput> | UserCreateWithoutNotificationInput[] | UserUncheckedCreateWithoutNotificationInput[]
     connectOrCreate?: UserCreateOrConnectWithoutNotificationInput | UserCreateOrConnectWithoutNotificationInput[]
@@ -4975,6 +5100,33 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type RepoCreateWithoutSubscribersInput = {
     name: string
     owner: string
@@ -4998,12 +5150,18 @@ export namespace Prisma {
   export type NotificationCreateWithoutUserInput = {
     title: string
     repo: string
+    owner?: string | null
+    issueId?: number | null
+    created_at?: string | null
   }
 
   export type NotificationUncheckedCreateWithoutUserInput = {
     id?: number
     title: string
     repo: string
+    owner?: string | null
+    issueId?: number | null
+    created_at?: string | null
   }
 
   export type NotificationCreateOrConnectWithoutUserInput = {
@@ -5061,6 +5219,9 @@ export namespace Prisma {
     id?: IntFilter<"Notification"> | number
     title?: StringFilter<"Notification"> | string
     repo?: StringFilter<"Notification"> | string
+    owner?: StringNullableFilter<"Notification"> | string | null
+    issueId?: IntNullableFilter<"Notification"> | number | null
+    created_at?: StringNullableFilter<"Notification"> | string | null
   }
 
   export type UserCreateWithoutSubReposInput = {
@@ -5171,18 +5332,27 @@ export namespace Prisma {
   export type NotificationUpdateWithoutUserInput = {
     title?: StringFieldUpdateOperationsInput | string
     repo?: StringFieldUpdateOperationsInput | string
+    owner?: NullableStringFieldUpdateOperationsInput | string | null
+    issueId?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type NotificationUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     repo?: StringFieldUpdateOperationsInput | string
+    owner?: NullableStringFieldUpdateOperationsInput | string | null
+    issueId?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type NotificationUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     repo?: StringFieldUpdateOperationsInput | string
+    owner?: NullableStringFieldUpdateOperationsInput | string | null
+    issueId?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUpdateWithoutSubReposInput = {
